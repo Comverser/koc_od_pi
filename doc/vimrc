@@ -1,0 +1,120 @@
+
+""""""""""""""""""""""""""""""""""""""""
+" general
+""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+"""""""""""""""""""" paste
+nnoremap <F2> :set invpaste paste?<CR>
+imap <F2> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F2>
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+" search
+""""""""""""""""""""""""""""""""""""""""
+set hlsearch " Highlight matching search patterns
+set ignorecase " Include matching uppercase words with lowercase search term
+set incsearch " Enable incremental search
+set smartcase " Include only uppercase words with uppercase search term
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+" indent
+""""""""""""""""""""""""""""""""""""""""
+set autoindent " New lines inherit the indentation of previous lines.
+set cinoptions=g0
+set expandtab " Convert tabs to spaces.
+set shiftround " When shifting lines, round the indentation to the nearest multiple of “shiftwidth.
+set shiftwidth=4 " When shifting, indent using four spaces.
+set smarttab " Insert “tabstop” number of spaces when the “tab” key is pressed.
+set tabstop=4 " Indent using four spaces.
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+" performance
+""""""""""""""""""""""""""""""""""""""""
+set complete-=i " Limit the files searched for auto-completes.
+set lazyredraw " Don’t update screen during macro and script execution.
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+" text rendering
+""""""""""""""""""""""""""""""""""""""""
+set encoding=utf-8 " Use an encoding that supports unicode.
+syntax enable " Enable syntax highlighting.
+set wrap " Enable line wrapping.
+set showmatch "highlight matching parenthesis
+"""""""""""""""""""" scroll
+set scrolloff=5
+set sidescrolloff=5
+set ttyfast " speed up scrolling
+
+
+""""""""""""""""""""""""""""""""""""""""
+" user interface
+""""""""""""""""""""""""""""""""""""""""
+set laststatus=2 " Always display the status bar.
+set cursorline " Highlight the line currently under cursor.
+set number relativenumber " Show line number on the current line and relative numbers on all other lines.
+set title " Set the windows title, reflecting the file currently being edited.
+set background=dark " Use colors that suit a dark background.
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')} " Set status line display
+"""""""""""""""""""" Display different types of white spaces.
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+"""""""""""""""""""" Display
+set showmode
+set showcmd
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+" user interface
+""""""""""""""""""""""""""""""""""""""""
+set foldmethod=indent " Fold based on indention levels.
+set foldnestmax=3 " Only fold up to three nested levels.
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+" key mapping
+""""""""""""""""""""""""""""""""""""""""
+nmap <F8> :w <bar> exec '!./build.sh'<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""
+" auto commands
+""""""""""""""""""""""""""""""""""""""""
+"autocmd BufWritePost .vimrc so %
+
+
+
+""""""""""""""""""""""""""""""""""""""""
+" plugins
+""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""" vimplug install and commands
+"""""""""""""""""""" on Unix
+"curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"""""""""""""""""""" commands
+"PlugInstall
+"PlugUpdate
+"PlugClean
+"PlugUpgrade
+"PlugStatus
+"""""""""""""""""""" plugins
+call plug#begin('~/.vim/plugged') " '~/.vim/plugged' for Linux
+Plug 'scrooloose/nerdtree'
+Plug 'morhetz/gruvbox'
+call plug#end()
+
+" NERDTree
+map <C-n> :NERDTreeToggle<CR> " NERDTree
+
+" gruvbox
+colorscheme gruvbox
+

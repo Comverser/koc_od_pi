@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/libs/koc_od_pi_intf.h
+
+/home/pi/dev_s/koc_od_pi/src/apps/main.cpp
+koc_od_pi_intf.h
+/home/pi/dev_s/koc_od_pi/src/apps/koc_od_pi_intf.h
+iostream
+-
+unistd.h
+-
+
+/home/pi/dev_s/koc_od_pi/src/libs/koc_od_pi_intf.cpp
+koc_od_pi_intf.h
+/home/pi/dev_s/koc_od_pi/src/libs/koc_od_pi_intf.h
+wiringPi.h
+/home/pi/dev_s/koc_od_pi/src/libs/wiringPi.h
+
+/home/pi/dev_s/koc_od_pi/src/libs/koc_od_pi_intf.h
+

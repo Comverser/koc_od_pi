@@ -1,0 +1,3 @@
+/home/pi/dev_s/koc_od_pi/build/CMakeFiles/rebuild_cache.dir
+/home/pi/dev_s/koc_od_pi/build/CMakeFiles/demo.dir
+/home/pi/dev_s/koc_od_pi/build/CMakeFiles/edit_cache.dir
