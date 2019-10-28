@@ -1,7 +1,55 @@
-//#include "koc_od_pi_intf.h"
-//#include <iostream> // std::cout
-//#include <unistd.h> // sleep()
 #include <gtk/gtk.h>
+
+#include "wiringPi.h"
+
+enum ttl
+{
+    strobe = 36,
+    data0 = 33,
+    data1 = 38,
+    data2 = 35,
+    data3 = 40,
+    data4 = 37
+};
+
+int setup()
+{
+    if (wiringPiSetupPhys() == -1)
+    {
+        return 1;
+    }
+
+    // pin mode settings
+    pinMode(strobe, OUTPUT);
+    pinMode(data0, OUTPUT);
+    pinMode(data1, OUTPUT);
+    pinMode(data2, OUTPUT);
+    pinMode(data3, OUTPUT);
+    pinMode(data4, OUTPUT);
+
+    // init
+    digitalWrite (strobe, HIGH);
+    digitalWrite (data0, LOW);
+    digitalWrite (data1, LOW);
+    digitalWrite (data2, LOW);
+    digitalWrite (data3, LOW);
+    digitalWrite (data4, LOW);
+
+    return 0;
+}
+
+void ttl(int num)
+{
+    // ttl
+    digitalWrite (data0, 00001 & (num>>0));
+    digitalWrite (data1, 00001 & (num>>1));
+    digitalWrite (data2, 00001 & (num>>2));
+    digitalWrite (data3, 00001 & (num>>3));
+    digitalWrite (data4, 00001 & (num>>4));
+    // strobe
+    digitalWrite (strobe, LOW);
+    digitalWrite (strobe, HIGH);
+}
 
 GtkWidget *g_lbl_hello;
 GtkWidget *g_lbl_count;
@@ -46,47 +94,3 @@ void on_window_main_destroy()
 {
     gtk_main_quit();
 }
-
-/*
-int main(void)
-{
-    koc_od_pi::intf object;
-
-    if ( object.setup() )
-    {
-        std::cout << "error" << std::endl;
-        return 1;
-    }
-
-    int num = 0;
-    while (1)
-    {
-        if (num == 32)
-        {
-            num = 0;
-        }
-        object.ttl(num);
-        sleep(5);
-        num++;
-    }
-
-    return 0;
-
-}
-
-int main (int argc, char **argv)
-{
-    GtkWidget *window;
-
-    gtk_init (&argc, &argv);
-
-    window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title (GTK_WINDOW (window), "Hello world !");
-    g_signal_connect (G_OBJECT (window), "destroy", gtk_main_quit, NULL);
-
-    gtk_widget_show_all (window);
-    gtk_main ();
-
-    return 0;
-}
-*/
